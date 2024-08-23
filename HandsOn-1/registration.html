@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - E-Commerce Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7d9d9; 
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff6f61; 
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .form-group input:focus {
+            border-color: #ff6f61; 
+            outline: none;
+        }
+        .form-group .form-error {
+            color: #d9534f; 
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .form-group .form-success {
+            color: #5bc0de; 
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6f61; 
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-group button:hover {
+            background-color: #ff4b40; 
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-link a {
+            color: #ff6f61; 
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create an Account</h1>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                <div class="form-error" id="usernameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <div class="form-error" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="form-error" id="passwordError"></div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div class="form-error" id="confirmPasswordError"></div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Register</button>
+            </div>
+            <div class="login-link">
+                Already have an account? <a href="/login">Login here</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            document.querySelectorAll('.form-error').forEach(error => error.textContent = '');
+
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            let isValid = true;
+
+            if (username === '') {
+                document.getElementById('usernameError').textContent = 'Username is required.';
+                isValid = false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '') {
+                document.getElementById('emailError').textContent = 'Email is required.';
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById('emailError').textContent = 'Enter a valid email address.';
+                isValid = false;
+            }
+            const passwordPattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+            if (password === '') {
+                document.getElementById('passwordError').textContent = 'Password is required.';
+                isValid = false;
+            } else if (!passwordPattern.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long, include one uppercase letter, and one special character.';
+                isValid = false;
+            }
+
+            if (password === '') {
+                document.getElementById('passwordError').textContent = 'Password is required.';
+                isValid = false;
+            }
+
+            if (confirmPassword === '') {
+                document.getElementById('confirmPasswordError').textContent = 'Please confirm your password.';
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Registration successful! You can Login now');
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

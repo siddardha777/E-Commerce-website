@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <div class="main-container">
+            <div class="logo-name">
+                <h1><span>S </span> H O P Y</h1>
+            </div>
+           
+            <div class="nav-bar">
+                <a href="index.html">HOME<a>
+                <a href="Product.html">PRODUCT</a>
+                <a href="cart/index.html">CART</a>
+               
+                <a href="About_us.html">ABOUT US</a>
+                <a href="login.html">LOGOUT</a>
+    
+        
+            </div>
+          
+        </div>
+    </section>
+    <div class="product-text"> <h1>NEW ARRIVALS</h1>
+    </div>
+    
+    <div class="product-list">
+        <!--All The Produts-->
+    </div>
+    <script>
+        const products = [
+    {
+        name: "Allen Solly",
+        price: "$20",
+        image: "../HandsOn-1/img/Allen-solly-slim.jpg"  // Ensure this path is correct
+    },
+    {
+        name: "MEN'S SHIRT",
+        price: "$40",
+        image: "../HandsOn-1/img/shirt-3.jpg"  // Fixed path, removed URL()
+    },
+    {
+        name: "US POLO MEN'S SHIRT",
+        price: "$40",
+        image: "../HandsOn-1/img/us-polo-shirt.jpg"  // Fixed path, removed URL()
+    },
+    {
+        name: "STYLISH SHIRT",
+        price: "$50",
+        image: "../HandsOn-1/img/shirt-2.jpg"  // Placeholder URL
+    },
+    {
+        name: "MEN'S FASHION",
+        price: "$70",
+        image: "../HandsOn-1/img/shirt-5.jpg"  // Placeholder URL
+    },
+    {
+        name: "Jack & Jones",
+        price: "$40",
+        image: "../HandsOn-1/img/jack & jones.jpg"  // Placeholder URL
+    },
+    {
+        name: "Denis Lingo Men's Stylish Shirt",
+        price: "$60",
+        image: "../HandsOn-1/img/Denis Lingo Mens Fashion.jpg"  // Placeholder URL
+
+    },
+    {
+        name: "Celio Men's Fashion",
+        price: "$50",
+        image: "../HandsOn-1/img/celio-shirt.jpg"  // Placeholder URL
+    },
+   
+    {
+        name: "FAshion Men's",
+        price: "$80",
+        image: "../HandsOn-1/img/shirt-2.jpg"  // Placeholder URL
+    },
+
+];
+
+function loadProducts() {
+    const productList = document.querySelector('.product-list');
+    products.forEach(product => {
+        const productItem = document.createElement('div');
+        productItem.classList.add('product-item');
+
+        productItem.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.price}</p>
+            <button>Add to Cart</button>
+        `;
+
+        productList.appendChild(productItem);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', loadProducts);
+
+    </script>
+</body>
+</html>
